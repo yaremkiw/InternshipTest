@@ -2,20 +2,28 @@ package institution.interlink;
 
 import person.Student;
 
+import java.util.ArrayList;
+
 public class Internship {
     private String name;
-    private String InternshipsList;
-
+    private ArrayList<Student> students = new ArrayList<>();
     public Internship(String name) {
         this.name = name;
-        this.InternshipsList = "";
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setStudent(Student student) {
-        this.InternshipsList += student.getName() + "\n";
-    }//realization of the designer this
+        this.students.add(student);
+    }
 
     public String getStudents() {
-        return InternshipsList;
+        String str = "";
+        for (Student student : students) {
+            str += student.getName() + "\n";
+        }
+        return str;
     }
 }

@@ -6,18 +6,27 @@ import person.Student;
 
 public class Application {
     public static void main(String[] args) {
-        University university = new University("CH.U.I.");
-        university.addStudent(new Student("Andrew Kostenko"), new Knowledge(4));
-        university.addStudent(new Student("Julia Veselkina"), new Knowledge(2));
-        university.addStudent(new Student("Maria Perechrest"), new Knowledge(5));
+        university.setStudents(createStudents());
 
+        //show the list of university students
+        for(Student student : source.getStudents()) {
+            university.addStudent(student);
+        }
         Internship internship = new Internship("Interlink");
-        for (Student student : university.getStudentList()) {
-            if (student.getKnowledge().getLevel() > 3) {
-                internship.setStudent(student);
+        setInternship(university, internship);
+        System.out.println("List of internship's students:");
+        System.out.println(internship.getStudents());
+
+        public static void setInternship(University university, Internship internship){
+            for (Student student : university.getStudents()) {
+                if (student.getKnowledge().getLevel() > university.getAverageLevel()) {
+                    internship.setStudent(student);
+
+                    //Browsing by Estimates
+
+                }
             }
         }
-        //Browsing by Estimates
         System.out.println("List of internship's students:");
         System.out.println(internship.getStudents());
     }
